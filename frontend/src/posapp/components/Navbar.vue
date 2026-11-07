@@ -17,6 +17,7 @@
 			@go-desk="goDesk"
 			@show-offline-invoices="showOfflineInvoices = true"
 			@open-employee-switch="openEmployeeSwitch"
+			@close-shift="openCloseShift" data-finora="finora: appbar close shift"
 		>
 			<!-- Slot for status indicator -->
 			<template #status-indicator>
@@ -312,6 +313,8 @@ export default {
 				{ text: "POS", icon: "mdi-network-pos", to: "/pos" },
 				{ text: "Payments", icon: "mdi-credit-card", to: "/payments" },
 				{ text: "Purchase Order", icon: "mdi-cart-plus", to: "/orders" },
+				{ text: "Quick Purchase", icon: "mdi-truck-delivery-outline", href: "#finora-purchase" },
+				{ text: "Print Labels", icon: "mdi-label-multiple-outline", href: "#finora-labels" },
 				{ text: "Barcode Printing", icon: "mdi-barcode", to: "/barcode" },
 			],
 			items: [],

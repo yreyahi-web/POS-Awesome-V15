@@ -124,7 +124,7 @@
 					</template>
 				</NavbarInfoGadgets>
 
-				<div :class="['profile-section', isRtl ? 'rtl-profile-section' : 'ltr-profile-section']">
+				<div :class="['profile-section', isRtl ? 'rtl-profile-section' : 'ltr-profile-section']" style="display: flex; flex-direction: row; align-items: center; gap: 8px">
 					<v-chip
 						v-if="cashierChipLabel"
 						variant="outlined"
@@ -159,6 +159,18 @@
 							</span>
 						</span>
 					</v-chip>
+					<v-btn
+						v-if="!posProfile?.posa_hide_closing_shift"
+						class="finora-close-shift"
+						color="red-darken-1"
+						variant="flat"
+						rounded="pill"
+						size="small"
+						prepend-icon="mdi-content-save-move-outline"
+						@click="$emit('close-shift')"
+					>
+						{{ __("Close Shift") }}
+					</v-btn>
 				</div>
 
 				<div
@@ -404,7 +416,7 @@ export default {
 			}
 		},
 	},
-	emits: ["nav-click", "go-desk", "show-offline-invoices", "open-employee-switch"],
+	emits: ["nav-click", "go-desk", "show-offline-invoices", "open-employee-switch", "close-shift"],
 };
 </script>
 

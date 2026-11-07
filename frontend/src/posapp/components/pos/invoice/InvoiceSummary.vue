@@ -72,6 +72,15 @@
 							!!discount_percentage_offer_name
 						"
 					/>
+						<div
+							v-if="pos_profile.posa_use_percentage_discount"
+							class="finora-disc-amount"
+							style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600;
+								margin-top: 4px; padding: 0 4px; color: rgb(var(--v-theme-warning))"
+						>
+							<span>{{ __("Discount Amount") }}</span>
+							<span>{{ currencySymbol(displayCurrency) }}{{ formatCurrency(Math.abs(Number(additional_discount) || 0)) }}</span>
+						</div>
 				</div>
 				<div class="counter-grid-summary__metric counter-grid-summary__metric--total">
 					<span>{{ __("Net total") }}</span>
@@ -213,6 +222,15 @@
 							"
 							class="summary-field summary-field--dock"
 						/>
+						<div
+							v-if="pos_profile.posa_use_percentage_discount"
+							class="finora-disc-amount"
+							style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600;
+								margin-top: 4px; padding: 0 4px; color: rgb(var(--v-theme-warning))"
+						>
+							<span>{{ __("Discount Amount") }}</span>
+							<span>{{ currencySymbol(displayCurrency) }}{{ formatCurrency(Math.abs(Number(additional_discount) || 0)) }}</span>
+						</div>
 					</div>
 				</div>
 
@@ -547,6 +565,8 @@ function handleAdditionalDiscountBlur() {
 
 function handleAdditionalDiscountPercentageUpdate(value) {
 	emit("update:additional_discount_percentage", value);
+	// finora: recalculate the discount while typing, no Enter needed
+	emit("update_discount_umount");
 }
 
 function handleAdditionalDiscountPercentageFocus() {

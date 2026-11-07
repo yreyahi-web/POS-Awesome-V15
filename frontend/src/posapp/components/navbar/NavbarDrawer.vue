@@ -32,6 +32,7 @@
 						:key="item.text"
 						:value="index"
 						:to="item.to"
+						:href="item.href"
 						@click="handleItemClick"
 						class="drawer-item"
 						active-class="active-item"
